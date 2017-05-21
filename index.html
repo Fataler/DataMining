@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+      <title>Data Mining Alpha</title>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   </head>
+   <body>
+      <nav class="light-blue lighten-1" role="navigation">
+         <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo center"><i class="material-icons">cloud</i>Data Mining Alpha</a>
+            <ul class="left">
+               <li><a href="#" data-activates="slide-out" class="button-collapse  show-on-large ">
+                  <i class="material-icons">menu</i></a>
+               </li>
+            </ul>
+            <ul id="slide-out" class="side-nav">
+               <li>
+                  <div class="userView">
+                     <div class="background light-blue ">
+                     </div>
+                     <a href="#!user"><img class="circle" src="images/avatar.jpg"></a>
+                     <a href="#!name"><span class="white-text name">John Doe</span></a>
+                     <a href="#!email"><span class="white-text email">SampleEmail@gmail.com</span></a>
+                  </div>
+               </li>
+               <li><a class="subheader">Diagramms</a></li>
+               <li>
+                  
+                <p>
+                  <input type="checkbox" class="filled-in" id="tech" checked="checked" />
+                  <label for="tech">Technical Feasibility</label>
+                </p>
+                <p>
+                  <input type="checkbox" class="filled-in" id="oper" checked="checked" />
+                  <label for="oper">Opetational Feasibility</label>
+                </p>
+                <p>
+                  <input type="checkbox" class="filled-in" id="sps" checked="checked" />
+                  <label for="sps">SPS</label>
+                </p>
+               </li>
+               
+            </ul>
+         </div>
+      </nav>
+      <div class="section no-pad-bot" id="index-banner">
+         <div class="container">
+            <br><br>
+            <div class="row">
+               <div class="col s12 m6 l6" id="tech-c">
+                  <div class="card z-depth-4">
+                     <div class="card-image">
+                        <canvas id="myBar" width="400" height="400" class="materialboxed white"></canvas>
+                     </div>
+                     <div class="card-content">
+                        <span class="card-title">Technical Feasibility</span>
+                        <p>The probability of technical success is high (Mondi has the technical capabilities in-house or can acquire it easily, objectives can be reached with reasonable effort. Knowledge and skill gap within TI, technical complexity, technical hurdles & uncertainties?</div>
+                  </div>
+               </div>
+               <div class="col s12 m6 l6">
+                  <div class="card z-depth-4" id="oper-c">
+                     <div class="card-image">
+                        <canvas id="myRadar" width="400" height="400" class="materialboxed white"></canvas>
+                     </div>
+                     <div class="card-content">
+                        <span class="card-title">Operational Feasibility</span>
+                        <p>Availability of: skills, knowledge, processes, equipment; hurdles and uncertainties</p>
+                     </div>
+                  </div>
+               </div>
+               <div class="col s12 m12 l12">
+                  <div class="card z-depth-4" id="sps-c">
+                     <div class="card-image">
+                        <canvas id="myLine"  class="materialboxed white"></canvas>
+                     </div>
+                     <div class="card-content">
+                        <span class="card-title">SPS</span>
+                        <p>Quality indicators</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <br><br><br><br><br><br><br><br>
+         </div>
+      </div>
+      <footer class="page-footer orange">
+         <div class="container">
+            <div class="row">
+               <div class="col l6 s12">
+                  <h5 class="white-text">Info</h5>
+                  <p class="grey-text text-lighten-4">Development of software to visualize trend charts and data on a mobile phone</p>
+               </div>
+            </div>
+         </div>
+         <div class="footer-copyright ">
+            <div class="container">
+               Made for Mondi Group 2017
+            </div>
+         </div>
+      </footer>
+      <!-- Scripts -->
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" src="js/chart.js"></script>
+      <script type="text/javascript" src="js/app.js"></script>
+      <script>
+         $(".button-collapse").sideNav();
+         var ctx = document.getElementById("myBar");
+         var myChart = new Chart(ctx, {
+         type: 'bar',
+         data: {
+         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+         datasets: [{
+           label: '# of Votes',
+           data: [12, 19, 3, 5, 2, 3],
+           backgroundColor: [
+               'rgba(255, 99, 132, 0.2)',
+               'rgba(54, 162, 235, 0.2)',
+               'rgba(255, 206, 86, 0.2)',
+               'rgba(75, 192, 192, 0.2)',
+               'rgba(153, 102, 255, 0.2)',
+               'rgba(255, 159, 64, 0.2)'
+           ],
+           borderColor: [
+               'rgba(255,99,132,1)',
+               'rgba(54, 162, 235, 1)',
+               'rgba(255, 206, 86, 1)',
+               'rgba(75, 192, 192, 1)',
+               'rgba(153, 102, 255, 1)',
+               'rgba(255, 159, 64, 1)'
+           ],
+           borderWidth: 2
+         }]
+         },
+         options: {
+         scales: {
+           yAxes: [{
+               ticks: {
+                   beginAtZero:true
+               }
+           }]
+         }
+         
+         }
+         });
+         
+         //radar graph
+         var ctx = document.getElementById("myRadar");
+         var myChart = new Chart(ctx, {
+         type: 'radar',
+         data: {
+         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+         datasets: [{
+           label: '# of Votes',
+           data: [12, 19, 10, 8, 5, 9],
+           backgroundColor: [
+               'rgba(153, 102, 255, 0.2)'
+           ],
+           borderColor: [
+               'rgba(153, 102, 255, 1)'
+           ],
+           borderWidth: 2
+         }]
+         },
+         options: {
+         scales: {
+           yAxes: [{
+               ticks: {
+                   beginAtZero:true
+               }
+           }]
+         }
+         }
+         });
+         
+         //radar graph
+         var ctx = document.getElementById("myLine");
+         var myChart = new Chart(ctx, {
+         type: 'line',
+         data: {
+         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+         datasets: [{
+           label: '# of Votes',
+           data: [12, 19, 10, 8, 5, 9],
+           backgroundColor: [
+               'rgba(153, 102, 255, 0.2)'
+           ],
+           borderColor: [
+               'rgba(153, 102, 255, 1)'
+           ],
+           borderWidth: 2
+         }]
+         },
+         options: {
+         scales: {
+           yAxes: [{
+               ticks: {
+                   beginAtZero:true
+               }
+           }]
+         }
+         }
+         });
+      </script>
+   </body>
+</html>
