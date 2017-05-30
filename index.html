@@ -39,25 +39,27 @@
 						<label for="sps">SPS</label>
 					</p>
 				</li>
-				
+
 			</ul>
 		</div>
 	</nav>
 	<div class="section no-pad-bot" id="index-banner">
 		<div class="container">
 			<div class="row">
-				<div class="col s12 m6 l6" id="tech-c">
-					<div class="card z-depth-4">
+				<!--			1st card-->
+				<div class="col s12 m6 l6  " id="tech-c">
+					<div class="card z-depth-4   ">
 						<div class="card-image">
 							<canvas id="myBar" width="400" height="400" class="materialboxed white"></canvas>
 						</div>
-						<div class="card-content"> <span class="card-title">Technical Feasibility</span>
+						<div class="card-content"> <span class="card-title">Visual Thrend</span>
 							<p>
 								The probability of technical success is high (Mondi has the technical capabilities in-house or can acquire it easily, objectives can be reached with reasonable effort. Knowledge and skill gap within TI, technical complexity, technical hurdles & uncertainties?
 							</p>
 						</div>
 					</div>
 				</div>
+				<!--				1st card end-->
 				<div class="col s12 m6 l6">
 					<div class="card z-depth-4" id="oper-c">
 						<div class="card-image">
@@ -108,7 +110,6 @@
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/Chart.js"></script>
 	<script>
-		
 		var ctx = document.getElementById("myBar");
 		var myChart = new Chart(ctx, {
 			type: 'bar',
@@ -143,17 +144,17 @@
 			data: {
 				labels: ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
 				datasets: [{
-					label: '# of Votes',
+					label: 'Visual Thrend',
 					data: [12, 19, 10, 8, 5, 9],
 					backgroundColor: [
 						'rgba(255, 99, 132, 0.7)',
-						'rgba(54, 162, 235, 0.7)', 
-						'rgba(255, 206, 86, 0.7)', 
-						'rgba(75, 192, 192, 0.7)', 
-						'rgba(153, 102, 255, 0.7)', 
+						'rgba(54, 162, 235, 0.7)',
+						'rgba(255, 206, 86, 0.7)',
+						'rgba(75, 192, 192, 0.7)',
+						'rgba(153, 102, 255, 0.7)',
 						'rgba(255, 159, 64, 0.7)'
 					],
-					
+
 					borderWidth: 2
 				}]
 			}
@@ -163,10 +164,10 @@
 		var myChart = new Chart(ctx, {
 			type: 'line',
 			data: {
-				labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+				labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
 				datasets: [{
 					label: 'SPS#1',
-					data: [12, 19, 10, 8, 5, 9],
+					data: [127, 142, 128, 123, 126, 144, 128, 135, 135, 126],
 					backgroundColor: [
 						'rgba(153, 102, 255, 0.2)'
 					],
@@ -174,9 +175,9 @@
 						'rgba(153, 102, 255, 1)'
 					],
 					borderWidth: 2
-				},{
+				}, {
 					label: 'SPS#2',
-					data: [8, 15, 4, 12, 9, 18],
+					data: [165, 120, 110, 100, 180, 140, 111, 112, 98, 95],
 					backgroundColor: [
 						'rgba(75, 192, 192, 0.2)'
 					],
@@ -196,6 +197,7 @@
 				}
 			}
 		});
+
 	</script>
 </body>
 
