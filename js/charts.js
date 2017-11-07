@@ -1,17 +1,17 @@
-var labl = ["0:00", "", "", "", "", "",
-"0:15", "", "", "", "", "",
-"0:30", "", "", "", "", "",
-"0:45", "", "", "", "", "",
-"1:00", "", "", "", "", "",
-"1:15", "", "", "", "", "",
-"1:30", "", "", "", "", "",
-"1:45", "", "", "", "", "",
-"2:00", "", "", "", "", "",
-"2:15", "", "", "", "", "",
-"2:30", "", "", "", "", "",
-"2:45", "", "", "", "", "",
-"3:00", "", "", "", "", "",
-"3:15", "", "", "", "", "",
+var labl = ["0:00", "", "", "", "",
+"0:15", "", "", "", "",
+"0:30", "", "", "", "",
+"0:45", "", "", "", "",
+"1:00", "", "", "", "",
+"1:15", "", "", "", "",
+"1:30", "", "", "", "",
+"1:45", "", "", "", "",
+"2:00", "", "", "", "",
+"2:15", "", "", "", "",
+"2:30", "", "", "", "",
+"2:45", "", "", "", "",
+"3:00", "", "", "", "",
+"3:15", "", "", "", "",
 "3:30"
 ];
 var OPTIONS = {
@@ -116,11 +116,11 @@ var myChart3 = new Chart(ctx, {
 var t = setInterval(runFunction, 1000);
 
 function runFunction() {
-	data_line1.shift();
-	myChart2.data.datasets[0].data.shift();
-	myChart2.data.datasets[1].data.shift();
-	myChart3.data.datasets[0].data.shift();
-	myChart3.data.datasets[1].data.shift();
+	data_line1.push(data_line1.shift())
+	myChart2.data.datasets[0].data.push(myChart2.data.datasets[0].data.shift());
+	myChart2.data.datasets[1].data.push(myChart2.data.datasets[1].data.shift());
+	myChart3.data.datasets[0].data.push(myChart3.data.datasets[0].data.shift());
+	myChart3.data.datasets[1].data.push(myChart3.data.datasets[1].data.shift());
 	myChart1.update();
 	myChart2.update();
 	myChart3.update();
