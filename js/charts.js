@@ -14,6 +14,15 @@ var labl = ["0:00", "", "", "", "",
 "3:15", "", "", "", "",
 "3:30"
 ];
+var res;
+Papa.parse("/book2.csv", {
+	download: true,
+	complete: function (results) {
+		console.log(results);
+		res = results;
+		genCharts();
+	}
+});
 var OPTIONS = {
 	scales: {
 		yAxes: [{
@@ -85,7 +94,7 @@ var ctx = document.getElementById("myLine3");
 var myChart3 = new Chart(ctx, {
 	type: 'line',
 	data: {
-		labels: labl,
+		labels: labl.slice(0, labl.length / 3),
 		datasets: [{
 			label: 'UWG_T_Wasser_IST_Temp',
 			data: [30, 30, 30, 30.10000038, 30, 30, 30, 29.89999962, 29.89999962, 29.89999962, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 30.10000038, 30.10000038, 30, 30, 29.89999962, 29.89999962, 30, 29.89999962, 30, 30, 29.89999962, 29.89999962, 29.89999962, 29.89999962, 29.89999962, 29.79999924, 29.79999924, 29.79999924, 29.89999962, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.79999924, 29.70000076, 29.79999924, 29.79999924, 29.89999962, 29.89999962, 29.89999962, 29.89999962, 29.89999962, 30, 29.89999962, 30.10000038, 30.10000038, 30, 30.10000038, 30.10000038, 30.10000038, 30.10000038, 30.10000038, 30.10000038, 30.10000038, 30.20000076, 30.20000076, 30.29999924, 30.29999924, 30.29999924, 30.29999924, 30.20000076, 30.29999924, 30.29999924, 30.29999924, 30.20000076, 30.29999924, 30.29999924, 30.29999924, 30.29999924, 30.29999924, 30.39999962, 30.39999962, 30.39999962, 30.39999962, 30.39999962, 30.5, 30.5, 30.5, 30.60000038, 30.5, 30.5, 30.60000038, 30.60000038, 30.60000038, 30.5, 30.60000038, 30.60000038, 30.60000038, 30.60000038, 30.60000038, 30.60000038, 30.5, 30.5, 30.60000038, 30.5, 30.5, 30.60000038, 30.60000038, 30.70000076, 30.60000038, 30.60000038, 30.60000038, 30.70000076, 30.60000038, 30.70000076, 30.70000076, 30.60000038, 30.60000038, 30.70000076, 30.70000076, 30.70000076, 30.70000076, 30.70000076, 30.70000076, 30.70000076, 30.70000076, 30.70000076, 30.60000038, 30.70000076, 30.70000076, 30.60000038, 30.60000038, 30.60000038, 30.5, 30.60000038, 30.5, 30.5, 30.39999962, 30.39999962
@@ -112,7 +121,96 @@ var myChart3 = new Chart(ctx, {
 	},
 	options: OPTIONS
 });
+var ctx = document.getElementById("barRecept");
+var dataBar = {
+	labels: ["42-42", "43-43", "44-44"],
+	datasets: [{
+		label: ' ',
+		backgroundColor: 'rgba(75, 192, 192, 0.2)',
+		data: [1200.758789, 1200.688477, 1200.855713]
+		}]
 
+
+};
+var myBarChart = new Chart(ctx, {
+	type: 'bar',
+	data: dataBar,
+	options: {
+		scales: {
+			yAxes: [{
+				ticks: {
+					beginAtZero: false
+				}
+					}]
+		},
+		elements: {
+			point: {
+				radius: 0
+			}
+		}
+	}
+});
+
+
+
+
+function genData(data) {
+	myDat = {
+		backgroundColor: randomColor(),
+		data: data
+	}
+	return myDat;
+}
+
+function genCard(id, title, text, type, labels, dataset) {
+	$("#append").append('<div class="col s12 m6 l6" id="recept-c"> <div class = "card z-depth-4" ><div class = "card-image" ><canvas id ="' + id + '" height="300"  class="white"> </canvas> </div> <div class = "card-content" ><span class = "card-title" >' + title + '</span> <p>' + text + '</p> </div> </div> </div>');
+	var ctx = document.getElementById(id);
+
+	var myBarChart = new Chart(ctx, {
+		type: type,
+		data: dataset,
+		options: OPTIONS
+	});
+}
+
+
+function genCharts() {
+	for (var i = 0; i < res.data.length; i++) {
+		var id = res.data[i][0];
+		var title = res.data[i][1];
+		var text = res.data[i][2];
+		var type = res.data[i][3];
+		var charts = res.data[i][4];
+		for (var j = 0; j < res.data[i + 1].length; j++) {
+			if (j % 4 !== 0) res.data[i + 1][j] = ""
+		}
+		var labels = res.data[i + 1];
+		var mydata = res.data[i + 2];
+		var dataBar = {
+			labels: labels,
+			datasets: [{
+				label: '',
+				backgroundColor: randomColor(),
+				data: mydata
+		}]
+		};
+
+
+
+		if (charts > 1) {
+
+			for (var n = 1; n < charts; n++) {
+				dataBar.datasets.push(genData(res.data[i + 2 + n]));
+			}
+			genCard(id, title, text, type, labels, dataBar);
+			i += 3 + (charts - 1);
+		} else {
+			genCard(id, title, text, type, labels, dataBar);
+			i += 3;
+		}
+	}
+
+}
 var t = setInterval(runFunction, 1000);
 
 function runFunction() {
