@@ -90,7 +90,7 @@ var myChart2 = new Chart(ctx, {
 	options: OPTIONS
 });
 //radar graph
-var ctx = document.getElementById("myLine3");
+/*var ctx = document.getElementById("myLine3");
 var myChart3 = new Chart(ctx, {
 	type: 'line',
 	data: {
@@ -120,8 +120,9 @@ var myChart3 = new Chart(ctx, {
 				}]
 	},
 	options: OPTIONS
-});
-var ctx = document.getElementById("barRecept");
+});*/
+
+/*var ctx = document.getElementById("barRecept");
 var dataBar = {
 	labels: ["42-42", "43-43", "44-44"],
 	datasets: [{
@@ -149,7 +150,7 @@ var myBarChart = new Chart(ctx, {
 			}
 		}
 	}
-});
+});*/
 
 
 
