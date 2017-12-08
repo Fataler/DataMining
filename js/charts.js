@@ -218,9 +218,9 @@ function runFunction() {
 	data_line1.push(data_line1.shift())
 	myChart2.data.datasets[0].data.push(myChart2.data.datasets[0].data.shift());
 	myChart2.data.datasets[1].data.push(myChart2.data.datasets[1].data.shift());
-	myChart3.data.datasets[0].data.push(myChart3.data.datasets[0].data.shift());
-	myChart3.data.datasets[1].data.push(myChart3.data.datasets[1].data.shift());
+	//	myChart3.data.datasets[0].data.push(myChart3.data.datasets[0].data.shift());
+	//	myChart3.data.datasets[1].data.push(myChart3.data.datasets[1].data.shift());
 	myChart1.update();
 	myChart2.update();
-	myChart3.update();
+	//	myChart3.update();
 }
