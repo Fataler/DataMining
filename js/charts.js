@@ -15,7 +15,7 @@ var labl = ["0:00", "", "", "", "",
 "3:30"
 ];
 var res;
-Papa.parse("book2.csv", {
+Papa.parse("/DataMining/book2.csv", {
 	download: true,
 	complete: function (results) {
 		console.log(results);
